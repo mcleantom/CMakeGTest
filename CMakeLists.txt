@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 project(unittest_test)
 
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -21,9 +22,12 @@ file(GLOB_RECURSE unittests_src CONFIGURE_DEPENDS "*.cpp")
 set(CMAKE_COMPILE_WARNING_AS_ERROR OFF)
 set_target_properties(gtest gtest_main PROPERTIES COMPILE_WARING_AS_ERROR OFF)
 
+target_compile_options(gtest PRIVATE "-w")
+
 add_executable(
     unittests
-    ${unittests_src}
+    "rununittests.cpp"
+    "test_one.cpp"
 )
 
 target_link_libraries(
